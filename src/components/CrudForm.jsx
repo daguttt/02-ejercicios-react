@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
-const CrudForm = () => {
-  const handleChange = (e) => {};
-  const handleSubmit = (e) => {};
-  const handleReset = (e) => {};
+const initialForm = {
+  id: null,
+  name: "",
+  constellation: "",
+};
+
+const CrudForm = ({ onCreateData }) => {
+  const [form, setForm] = useState(initialForm);
+  // -**********************************-
+  // Functions
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Form validation
+    if (!form.name || !form.constellation) {
+      alert("Datos incompletos");
+      return;
+    }
+
+    // Id to create a new item
+    const id = Date.now();
+    onCreateData({ ...form, id });
+    handleReset();
+  };
+  const handleReset = (e) => {
+    setForm(initialForm);
+  };
+  // -**********************************-
   return (
     <form className="column" onSubmit={handleSubmit}>
       {/* Name */}
@@ -17,6 +47,7 @@ const CrudForm = () => {
             type="text"
             name="name"
             id="name"
+            value={form.name}
             onChange={handleChange}
           />
         </div>
@@ -32,6 +63,7 @@ const CrudForm = () => {
             type="text"
             name="constellation"
             id="constellation"
+            value={form.constellation}
             onChange={handleChange}
           />
         </div>
