@@ -80,7 +80,7 @@ const CrudForm = ({ onCreateData }) => {
       </div>
       <div className="field">
         <div className="control">
-          <input className="button is-danger" type="submit" value="Enviar" />
+          <input className="button is-primary" type="submit" value="Enviar" />
         </div>
       </div>
     </form>

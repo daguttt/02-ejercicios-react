@@ -6,7 +6,7 @@ const CrudTableRow = ({ el }) => {
       <td>{el.name}</td>
       <td>{el.constellation}</td>
       <td>
-        <button className="button is-primary mr-3">Editar</button>
+        <button className="button is-warning mr-3">Editar</button>
         <button className="button is-danger">Eliminar</button>
       </td>
     </tr>
