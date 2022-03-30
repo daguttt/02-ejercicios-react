@@ -26,7 +26,7 @@ const initialDb = [
   {
     id: 5,
     name: "Ikki",
-    constellation: "",
+    constellation: "Fénix",
   },
 ];
 
