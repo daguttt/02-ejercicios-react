@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const initialForm = {
   id: null,
@@ -6,8 +6,11 @@ const initialForm = {
   constellation: "",
 };
 
-const CrudForm = ({ onCreateData }) => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initialForm);
+  useEffect(() => {
+    dataToEdit ? setForm(dataToEdit) : setForm(initialForm);
+  }, [dataToEdit]);
   // -**********************************-
   // Functions
   const handleChange = (e) => {
@@ -25,13 +28,20 @@ const CrudForm = ({ onCreateData }) => {
       return;
     }
 
-    // Id to create a new item
-    const id = Date.now();
-    onCreateData({ ...form, id });
+    // Create o Update
+    if (!form.id) {
+      // Id to create a new item
+      const id = Date.now();
+      createData({ ...form, id });
+    } else {
+      updateData(form);
+    }
+
     handleReset();
   };
   const handleReset = (e) => {
     setForm(initialForm);
+    setDataToEdit(null);
   };
   // -**********************************-
   return (
@@ -74,7 +84,7 @@ const CrudForm = ({ onCreateData }) => {
             className="button is-info"
             type="reset"
             value="Limpiar"
-            onReset={handleReset}
+            onClick={handleReset}
           />
         </div>
       </div>
