@@ -45,55 +45,60 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   };
   // -**********************************-
   return (
-    <form className="column" onSubmit={handleSubmit}>
-      {/* Name */}
-      <div className="field">
-        <label htmlFor="name" className="label">
-          Nombre
-        </label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            name="name"
-            id="name"
-            value={form.name}
-            onChange={handleChange}
-          />
+    <div className="column">
+      <h3 className="subtitle">
+        {dataToEdit ? "Editar Caballero" : "Agregar Caballero"}
+      </h3>
+      <form onSubmit={handleSubmit}>
+        {/* Name */}
+        <div className="field">
+          <label htmlFor="name" className="label">
+            Nombre
+          </label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              name="name"
+              id="name"
+              value={form.name}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-      </div>
-      {/* Constellation */}
-      <div className="field">
-        <label htmlFor="constellation" className="label">
-          Constelación
-        </label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            name="constellation"
-            id="constellation"
-            value={form.constellation}
-            onChange={handleChange}
-          />
+        {/* Constellation */}
+        <div className="field">
+          <label htmlFor="constellation" className="label">
+            Constelación
+          </label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              name="constellation"
+              id="constellation"
+              value={form.constellation}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-      </div>
-      <div className="field">
-        <div className="control">
-          <input
-            className="button is-info"
-            type="reset"
-            value="Limpiar"
-            onClick={handleReset}
-          />
+        <div className="field">
+          <div className="control">
+            <input
+              className="button is-info"
+              type="reset"
+              value="Limpiar"
+              onClick={handleReset}
+            />
+          </div>
         </div>
-      </div>
-      <div className="field">
-        <div className="control">
-          <input className="button is-primary" type="submit" value="Enviar" />
+        <div className="field">
+          <div className="control">
+            <input className="button is-primary" type="submit" value="Enviar" />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
