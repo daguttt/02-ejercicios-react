@@ -13,6 +13,9 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData }) => {
         >
           Editar
         </button>
+        <button className="button is-danger" onClick={() => deleteData(id)}>
+          Eliminar
+        </button>
       </td>
     </tr>
   );
